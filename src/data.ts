@@ -21,7 +21,7 @@ export type MockTransaction = {
     gl: boolean,
     tx: boolean,
     receipt: boolean,
-    export: ExportStatus
+    exportMethod: ExportStatus
 }
 
 export const data: MockTransaction[] = [
@@ -34,7 +34,7 @@ export const data: MockTransaction[] = [
         gl: true,
         tx: false,
         receipt: false,
-        export: ExportStatus.CSV_EXPORTED
+        exportMethod: ExportStatus.CSV_EXPORTED
     },
     {
         id: "qwer-123rsa-dsad",
@@ -42,10 +42,10 @@ export const data: MockTransaction[] = [
         date: "June 7th",
         method: "1234567",
         amount: 10000,
-        gl: true,
-        tx: false,
+        gl: false,
+        tx: true,
         receipt: false,
-        export: ExportStatus.NOT_EXPORTED
+        exportMethod: ExportStatus.NOT_EXPORTED
     },
     {
         id: "qwer-14grdssa-dsad",
@@ -54,9 +54,9 @@ export const data: MockTransaction[] = [
         method: "1234567",
         amount: 10000,
         gl: true,
-        tx: false,
+        tx: true,
         receipt: false,
-        export: ExportStatus.QBO_EXPORTED
+        exportMethod: ExportStatus.QBO_EXPORTED
     },
     {
         id: "qwer-145fdssa-dsad",
@@ -64,10 +64,10 @@ export const data: MockTransaction[] = [
         date: "June 7th",
         method: "1234567",
         amount: 10000,
-        gl: true,
+        gl: false,
         tx: false,
         receipt: false,
-        export: ExportStatus.XERO_EXPORTED
+        exportMethod: ExportStatus.XERO_EXPORTED
     },
     {
         id: "qwer-gdfrsa-dsad",
@@ -75,10 +75,10 @@ export const data: MockTransaction[] = [
         date: "June 7th",
         method: "1234567",
         amount: 10000,
-        gl: true,
-        tx: false,
+        gl: false,
+        tx: true,
         receipt: false,
-        export: ExportStatus.NOT_EXPORTED
+        exportMethod: ExportStatus.NOT_EXPORTED
     },
     {
         id: "qwer-1fdsvcsa-dsad",
@@ -89,7 +89,7 @@ export const data: MockTransaction[] = [
         gl: true,
         tx: false,
         receipt: false,
-        export: ExportStatus.QBO_EXPORTED
+        exportMethod: ExportStatus.QBO_EXPORTED
     },
     {
         id: "qwer-1qcvxzsa-dsad",
@@ -97,9 +97,9 @@ export const data: MockTransaction[] = [
         date: "June 7th",
         method: "1234567",
         amount: 10000,
-        gl: true,
+        gl: false,
         tx: false,
         receipt: false,
-        export: ExportStatus.CSV_EXPORTED
+        exportMethod: ExportStatus.CSV_EXPORTED
     }
 ]

@@ -1,45 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
+import {RecDetails} from "./recDetails";
 import {Table} from "antd";
-
-const dataSource = [
-  {
-    key: '1',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-  },
-  {
-    key: '2',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
-  },
-];
+import {Role, data, ExportStatus, MockTransaction} from "./data";
 
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+      title: "Vendor",
+      dataIndex: "vendor",
+      key: "vendor"
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+      title: "Date",
+      dataIndex: "date",
+      key: "date"
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+      title: "Method",
+      dataIndex: "method",
+      key: "method"
   },
-];
+  {
+      title: "Amout",
+      dataIndex: "amount",
+      key: "amount"
+  },
+  {
+      title: "Rec Details",
+      key: "recDetails",
+      render: (record: any)=>{
+        return (
+          <RecDetails gl={record.gl} tx={record.tx} receipt={record.receipt}
+          exportMethod = {record.exportMethod} role={record.role}
+          />
+        )
+      }
+  }
+]
 
 function App() {
+  const [role, setRole] = useState<Role>(Role.SPENDER);
+  const switchRole = ()=>{
+    role === Role.SPENDER? setRole(Role.ADMIN) : setRole(Role.SPENDER)
+  }
   return (
     <div className="App">
-      <Table dataSource={dataSource} columns={columns} />;
+      <div className="status">
+        Current Role: {role}
+      </div>
+      <button onClick={switchRole} >Switch</button>
+      <Table dataSource={data} columns={columns} />
+      <div className="example">
+        <RecDetails 
+          gl={false}
+          tx={true}
+          receipt={true}
+          exportMethod = {ExportStatus.CSV_EXPORTED}
+          role={role}
+        />
+      </div>
+      <div className="example">
+        <RecDetails 
+          gl={true}
+          tx={true}
+          receipt={false}
+          exportMethod = {ExportStatus.CSV_EXPORTED}
+          role={role}
+        />
+      </div>
     </div>
   );
 }
