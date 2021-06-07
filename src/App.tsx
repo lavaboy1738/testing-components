@@ -33,8 +33,8 @@ function App() {
         key: "amount"
     },
     {
-        title: "Rec Details",
-        key: "recDetails",
+        title: "Status",
+        key: "status",
         render: (record: any)=>{
           return (
             <RecDetails gl={record.gl} tx={record.tx} receipt={record.receipt}
@@ -51,24 +51,6 @@ function App() {
       </div>
       <button onClick={switchRole} >Switch</button>
       <Table dataSource={data} columns={columns} />
-      <div className="example">
-        <RecDetails 
-          gl={false}
-          tx={true}
-          receipt={true}
-          exportMethod = {ExportStatus.CSV_EXPORTED}
-          role={role}
-        />
-      </div>
-      <div className="example">
-        <RecDetails 
-          gl={true}
-          tx={true}
-          receipt={false}
-          exportMethod = {ExportStatus.CSV_EXPORTED}
-          role={role}
-        />
-      </div>
     </div>
   );
 }

@@ -33,7 +33,7 @@ export const data: MockTransaction[] = [
         amount: 10000,
         gl: true,
         tx: false,
-        receipt: false,
+        receipt: true,
         exportMethod: ExportStatus.CSV_EXPORTED
     },
     {
@@ -55,7 +55,7 @@ export const data: MockTransaction[] = [
         amount: 10000,
         gl: true,
         tx: true,
-        receipt: false,
+        receipt: true,
         exportMethod: ExportStatus.QBO_EXPORTED
     },
     {
@@ -77,7 +77,7 @@ export const data: MockTransaction[] = [
         amount: 10000,
         gl: false,
         tx: true,
-        receipt: false,
+        receipt: true,
         exportMethod: ExportStatus.NOT_EXPORTED
     },
     {
@@ -99,7 +99,7 @@ export const data: MockTransaction[] = [
         amount: 10000,
         gl: false,
         tx: false,
-        receipt: false,
+        receipt: true,
         exportMethod: ExportStatus.CSV_EXPORTED
     }
 ]
